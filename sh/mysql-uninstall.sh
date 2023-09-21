@@ -32,7 +32,7 @@ if [[ $input = "yes" || $input = "y" ]]; then
     mysql_data_file_paths=$(find / -name mysql)
     # echo $mysql_data_file_paths
     for file_path in mysql_data_file_paths; do
-        echo $file_path
+        #echo $file_path
         rm -rf $file_path
     done
     echo "all the mysql data file has been removed"
