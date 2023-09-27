@@ -1,12 +1,16 @@
 #!/bin/bash
 
 echo
-echo "un-installing qpress...."
+echo "installing qpress...."
 echo
 echo
-qpress_install_dir="/usr/local/bin/qpress"
-rm -rf $qpress_install_dir
+qpress_install_path="/usr/local/bin/"
+
+## 安装到这个目录下面
+tar -xf ./qpress-11-linux-x64.tar -C $qpress_install_path
+## 重新执行这个脚本加载环境变量
+source /etc/profile
 echo
 echo
-echo "qpress has been removed...."
+echo "qpress has been installed...."
 exit

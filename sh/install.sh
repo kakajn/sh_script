@@ -34,7 +34,8 @@ echo "<============================== checking for wget install ================
 if [ -z $has_install_wget ]; then
       # 安装wget
       echo "wget did not install, we will install wget!"
-      rpm -ivh $excute_script_path/component/wget-1.14-18.el7_6.1.x86_64.rpm
+      #运行wget的安装脚本
+      ./$excute_script_path/component/wget/wget-install.sh
 else
       echo "you has has installed weget! so we will not help you install wget!"
 fi
@@ -46,7 +47,8 @@ echo "<============================== checking for xtrabackup install ==========
 if [ -z $has_install_xtrabackup ]; then
       # 安装wget
       echo "xtrabackup did not install, we will install xtrabackup!"
-      rpm -ivh $excute_script_path/component/percona-xtrabackup-80-8.0.33-28.1.el7.x86_64.rpm
+      # 运行xtrabackup的安装脚本
+       ./$excute_script_path/component/percona-xtrabackup/xtrabackup-install.sh
 else
       echo "you has has installed xtrabackup! so we will not help you install xtrabackup!"
 fi
@@ -58,8 +60,7 @@ echo "<============================== checking for qpress install ==============
 if [ -z $has_install_qpress ]; then
       # 安装wget
       echo "qpress did not install, we will install qpress!"
-      tar -xf $excute_script_path/component/qpress-11-linux-x64.tar -C /usr/local/bin
-      source /etc/profile
+      ./$excute_script_path/component/qpress-install.sh
 else
       echo "you has has installed qpress! so we will not help you install qpress!"
 fi
@@ -73,7 +74,7 @@ if [ -z $has_install_mysql ]; then
         # 安装wget
         echo "mysql did not install, we will install mysql 8.x for you!"
         # 这里是安装mysql 8.0 的程序
-        rpm -ivh $excute_script_path/component/qpress.rpm
+       ./$excute_script_path/component/mysql/mysql-install.sh
 else
       echo "you has has installed mysql! so we will not help you install mysql!"
       # 并提示如果你安装的不是 mysql 8.0 版本, 那么程序跑不起来, 因为很多依赖是mysql 8.x 的新特性

@@ -5,10 +5,7 @@ echo
 echo "staring remove xtrabackup"
 echo "\033[31mWARNING: remove software must has relational authority, so you had better run this script with ROOT "
 echo
-xtrabackup_install_info=$(yum search xtrabackup)
-for item in $xtrabackup_install_info; do
-  yum remove $item
-done
+rpm -e --nodeps percona-xtrabackup-80.x86_64
 echo
 echo "xtrabackup has been removed"
 exit

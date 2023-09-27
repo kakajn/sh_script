@@ -72,10 +72,10 @@ for ((i = 0; i < ${#args[@]}; i++)); do
 done
 
 # 判断当前使用的是什么模式进行获取.xb文件的
- if( -z w_mode & -z l_mode ); then
+ if( -z $w_mode & -z $l_mode ); then
      echo "不能同时使用 -w模式 和 -l 模式"
      exit
- elif( -z w_mode); then
+ elif( -z $w_mode ); then
    use_mode="w_model"
  else
    use_model="l_model"
@@ -133,12 +133,12 @@ cp "$mysql_general_config_file_path/$mysql_config_file_name" "$unpress_file_path
 run_temp_variable=$(netstat -tuln | grep $mysql_tcp_port)
 # 判断这个结果为不为null
 # 如果为null说明3306 没有被占用, 直接使用3306
-if [ -z run_temp_variable ]; then
+if [ -z $run_temp_variable ]; then
     mysql_tcp_port=3306
 else
 # 那么就生成一个 3306 - 10000 之间的随机数
 # 这里让他做一个循环, 如果有端口占有就一直生成
-   while [ -z run_temp_variable]; do
+   while [ -z $run_temp_variable ]; do
           mysql_tcp_port=$(shuf -i 3306-10000 -n 1)
           run_temp_variable=$(netstat -tuln | grep $mysql_tcp_port)
    done

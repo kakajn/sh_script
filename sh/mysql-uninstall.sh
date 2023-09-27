@@ -27,11 +27,9 @@ fi
 read -p "delete mysql data file? y(yes) or n(no)" input
 if [[ $input = "yes" || $input = "y" ]]; then
     # 寻找所有mysql数据文件进行删除
-    # 重新设置分隔符
-    IFS=$' '
     mysql_data_file_paths=$(find / -name mysql)
     # echo $mysql_data_file_paths
-    for file_path in mysql_data_file_paths; do
+    for file_path in $mysql_data_file_paths; do
         #echo $file_path
         rm -rf $file_path
     done
@@ -44,6 +42,8 @@ if [[ $input = "yes" || $input = "y" ]]; then
     # 寻找mysql的配置文件进行删除
     # echo "mysql config file is deleted!"
     rm -rf /etc/my.cnf
+    #同时删除密码配置文件
+    rm -rf /var/log/mysqld.log
 fi
 
 echo
