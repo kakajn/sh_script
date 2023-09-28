@@ -180,7 +180,7 @@ mysql_tcp_port=3306
 #   done
 #fi
 # 这里把配置直接写入 mysql 的配置文件
-echo prot=$mysql_tcp_port >> "$unpress_file_path/$mysql_config_file_name"
+#echo prot=$mysql_tcp_port >> "$unpress_file_path/$mysql_config_file_name"
 
 #改变文件的所有者
 chown -R mysql:mysql "$unpress_file_path"
