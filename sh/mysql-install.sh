@@ -22,13 +22,13 @@ echo
 #error: Failed dependencies:
 #        mysql-community-client(x86-64) >= 8.0.11 is needed by mysql-community-server-8.0.33-1.el7.x86_64
 #        mysql-community-icu-data-files = 8.0.33-1.el7 is needed by mysql-community-server-8.0.33-1.el7.x86_64
-rpm -ivh ./mysql-community-client-plugins-8.0.33-1.el7.x86_64.rpm
-rpm -ivh ./mysql-community-common-8.0.33-1.el7.x86_64.rpm
-rpm -ivh ./mysql-community-libs-8.0.33-1.el7.x86_64.rpm
-rpm -ivh ./mysql-community-libs-compat-8.0.33-1.el7.x86_64.rpm
-rpm -ivh ./mysql-community-icu-data-files-8.0.33-1.el7.x86_64.rpm
-rpm -ivh ./mysql-community-client-8.0.33-1.el7.x86_64.rpm
-rpm -ivh ./mysql-community-server-8.0.33-1.el7.x86_64.rpm
+rpm -ivh ./component/mysql/mysql-community-client-plugins-8.0.33-1.el7.x86_64.rpm
+rpm -ivh ./component/mysql/mysql-community-common-8.0.33-1.el7.x86_64.rpm
+rpm -ivh ./component/mysql/mysql-community-libs-8.0.33-1.el7.x86_64.rpm
+rpm -ivh ./component/mysql/mysql-community-libs-compat-8.0.33-1.el7.x86_64.rpm
+rpm -ivh ./component/mysql/mysql-community-icu-data-files-8.0.33-1.el7.x86_64.rpm
+rpm -ivh ./component/mysql/mysql-community-client-8.0.33-1.el7.x86_64.rpm
+rpm -ivh ./component/mysql/mysql-community-server-8.0.33-1.el7.x86_64.rpm
 
 echo
 echo
@@ -42,7 +42,7 @@ echo "initializing your mysql ................"
 mysqld --initialize --user=mysql
 echo
 echo
-mysql_temporary_password=$(cat /var/log/mysqld.log | grep "A temporary password is generated for" | cut -d ":" -f 4)
+mysql_temporary_password=$(cat /var/log/mysqld.log | grep "A temporary password is generated for" | tail -n 1 | cut -d ":" -f 4)
 echo "这是你第一次登录mysql, 这个是临时生成的登录密码===================>[$mysql_temporary_password]<========================="
 read -p "set mysql auto start when boot ? y(yes) n(no) 是否设置mysql开机自动启动  y(yes) n(no):  " input
 if [[ input = "yes" || input = "y" ]]; then

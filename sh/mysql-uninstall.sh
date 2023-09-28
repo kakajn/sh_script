@@ -7,6 +7,7 @@ echo
 # 停止mysql服务
 echo "starting stop mysql service"
 systemctl stop mysqld
+script_path=$(pwd)
 
 # find all mysql rpm install package
 mysql_install_packages=$(rpm -qa | grep mysql)
@@ -31,7 +32,9 @@ if [[ $input = "yes" || $input = "y" ]]; then
     # echo $mysql_data_file_paths
     for file_path in $mysql_data_file_paths; do
         #echo $file_path
-        rm -rf $file_path
+        if [ -z $(echo $file_path | grep $script_path) ]; then
+                    rm -rf $file_path
+        fi
     done
     echo "all the mysql data file has been removed"
 fi

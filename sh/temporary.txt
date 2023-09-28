@@ -1,0 +1,2 @@
+2023-09-27T01:56:58.037670Z 6 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: =oFO=BmKs0tg
+ePthRrP.K89V
