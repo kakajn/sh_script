@@ -78,6 +78,13 @@ for ((i = 0; i < ${#args[@]}; i++)); do
     i=$[$i+1]
 done
 
+if [ -d $t_param ]; then
+      echo "存在文件夹: $t_param"
+else
+      echo "文件夹 $t_param 不存在, 正在进行自动创建"
+      mkdir t_param
+fi
+
 #打印参数
 echo "w_param参数是: $w_param"
 echo "l_param参数是: $l_param"
